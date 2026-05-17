@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Premium Prompt Page</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#050816;
+  color:white;
+  overflow-x:hidden;
+  padding:40px 5% 100px;
+  position:relative;
+}
+
+/* BACKGROUND */
+
+body::before{
+  content:'';
+  position:fixed;
+  width:800px;
+  height:800px;
+  background:radial-gradient(circle,#8b5cf633,transparent 70%);
+  top:-300px;
+  left:-300px;
+  z-index:-2;
+}
+
+body::after{
+  content:'';
+  position:fixed;
+  width:800px;
+  height:800px;
+  background:radial-gradient(circle,#00f0ff22,transparent 70%);
+  bottom:-300px;
+  right:-300px;
+  z-index:-2;
+}
+
+/* TITLE */
+
+.page-title{
+  text-align:center;
+  font-size:58px;
+  margin-bottom:16px;
+  font-weight:800;
+  background:linear-gradient(90deg,#ffffff,#8b5cf6,#00f0ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.page-subtitle{
+  text-align:center;
+  max-width:800px;
+  margin:auto;
+  color:#94a3b8;
+  line-height:1.8;
+  margin-bottom:70px;
+  font-size:16px;
+}
+
+/* GENERATE BUTTON */
+
+.generate-btn{
+  width:100%;
+  margin-top:16px;
+  padding:18px;
+  border:none;
+  border-radius:20px;
+  background:linear-gradient(90deg,#10b981,#00f0ff);
+  color:white;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.4s;
+}
+
+.generate-btn:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 40px rgba(16,185,129,0.35);
+}
+
+/* GRID */
+
+.prompt-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+  gap:40px;
+}
+
+/* CARD */
+
+.prompt-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:34px;
+  overflow:hidden;
+  backdrop-filter:blur(18px);
+  transition:0.45s;
+  position:relative;
+}
+
+.prompt-card:hover{
+  transform:translateY(-12px);
+  border-color:#00f0ff;
+  box-shadow:0 0 50px rgba(0,240,255,0.18);
+}
+
+/* IMAGE */
+
+.prompt-card img{
+  width:100%;
+  display:block;
+}
+
+/* CONTENT */
+
+.card-content{
+  padding:30px;
+}
+
+/* SMALL TAG */
+
+.prompt-tag{
+  display:inline-block;
+  padding:9px 18px;
+  border-radius:999px;
+  background:rgba(139,92,246,0.15);
+  border:1px solid rgba(139,92,246,0.3);
+  color:#c4b5fd;
+  font-size:13px;
+  margin-bottom:22px;
+}
+
+/* TITLE */
+
+.card-content h3{
+  font-size:40px;
+  line-height:1.25;
+  margin-bottom:28px;
+}
+
+/* PROMPT BOX */
+
+.prompt-box{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:26px;
+  padding:28px;
+  color:#cbd5e1;
+  line-height:2;
+  font-size:16px;
+  max-height:280px;
+  overflow:auto;
+  margin-bottom:28px;
+}
+
+/* SCROLLBAR */
+
+.prompt-box::-webkit-scrollbar{
+  width:6px;
+}
+
+.prompt-box::-webkit-scrollbar-thumb{
+  background:#00f0ff;
+  border-radius:999px;
+}
+
+/* BUTTON */
+
+.copy-btn{
+  width:100%;
+  padding:18px;
+  border:none;
+  border-radius:20px;
+  background:linear-gradient(90deg,#8b5cf6,#00f0ff);
+  color:white;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.4s;
+}
+
+.copy-btn:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 40px rgba(0,240,255,0.35);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  body{
+    padding:30px 4% 80px;
+  }
+
+  .page-title{
+    font-size:40px;
+  }
+
+  .page-subtitle{
+    font-size:14px;
+    margin-bottom:50px;
+  }
+
+  .prompt-grid{
+    grid-template-columns:1fr;
+  }
+
+  .card-content{
+    padding:24px;
+  }
+
+  .card-content h3{
+    font-size:26px;
+  }
+
+  .prompt-box{
+    font-size:15px;
+    line-height:1.9;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TITLE -->
+
+<h1 class="page-title">
+  Ravi Editz 
+</h1>
+
+<p class="page-subtitle">
+
+  Explore cinematic AI photo editing prompts, futuristic styles,
+  viral Instagram concepts and ultra realistic creative effects.
+
+</p>
+
+<!-- GRID -->
+
+<div class="prompt-grid">
+
+  <!-- CARD 1 -->
+
+  <div class="prompt-card">
+
+    <img src="1/5/boy.png">
+
+    <div class="card-content">
+
+      <div class="prompt-tag">
+        Chibi Prompt
+      </div>
+
+      <h3>
+        3d Chini Art Emage Prompt 
+      </h3>
+
+      <div class="prompt-box" id="prompt1">
+
+Use the uploaded reference photo of the person and keep the face identity exactly the same. Create a highly detailed cute Korean-style Instagram aesthetic edit in 4:5 ratio.
+
+Scene:
+Use the same original background from the uploaded image. Keep the lighting warm, soft, cinematic, and natural golden hour. Maintain realistic skin texture and original facial features.
+
+Main Character:
+Place the real person in the center as the main subject with a clean white sticker outline around the body. Keep the same outfit, hairstyle, pose style, body shape, and accessories from the original image.
+
+Chibi Characters:
+Add multiple mini 3D chibi versions of the same person around the image. The chibi characters must clearly resemble the original person and wear the same outfit/colors.
+
+Different chibi poses and expressions:
+
+jumping happily
+
+waving hand
+
+sitting relaxed
+
+holding a cold drink
+
+peace sign pose
+
+cute smiling pose
+
+squatting cute pose
+
+
+Style of chibi:
+Glossy 3D render, ultra cute, soft pastel tones, big expressive eyes, smooth lighting, toy-like Korean Instagram aesthetic.
+
+Decorations:
+Add hand-drawn white doodle elements around the composition:
+
+stars
+
+hearts
+
+sparkles
+
+motion lines
+
+clouds
+
+smile icons
+
+tiny cute symbols
+
+
+Add aesthetic handwritten doodle text in casual white marker style:
+
+“shine”
+
+“bright day”
+
+“smile”
+
+“happy”
+
+“good vibes”
+
+“you got this”
+
+
+Watermark:
+Add a small but visible watermark logo text “RAVI EDITZ” in the bottom-left corner using bold red and white brush typography. Keep it stylish and not too large.
+
+Overall Style:
+Cute Instagram collage aesthetic, clean composition, ultra detailed, photorealistic mixed with stylized 3D chibi art, soft glow, premium editing look, vibrant but balanced colors, high detail, trendy social media poster style.
+      </div>
+
+      <button class="copy-btn" onclick="copyPrompt('prompt1', this)">
+        Copy Prompt
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- CARD 2 -->
+
+  <div class="prompt-card">
+
+    <img src="1/5/girl.png">
+
+    <div class="card-content">
+
+      <div class="prompt-tag">
+        Cartoon 
+      </div>
+
+      <h3>
+        Cartoon 2d emage prompt 
+      </h3>
+
+      <div class="prompt-box" id="prompt2">
+
+Use a real face as a reference photo The background is the same as in the photo. The lighting is warm, soft, and clean, with subtle shadows. Around the image add several mini chibi (3D cute style) version of the Character, While maintaining the original facial features. Expressions: jumping cheerfully waving sitting relaxed holding a drink cute and playful expressions Add hand-drawn white doodle elements: outline around the main body stars, hearts, sparkless motion lines small cute icons Add aesthetic handwriting such as: "shine," "bright " day, "happy, smile, ect. (Casual doodle font) overall style: clean & aesthetic composition white sticker outline soft pastel colour tone high detall 3D chibi glossy look cute korean style instagrammable. 4:5
+
+      </div>
+
+      <button class="copy-btn" onclick="copyPrompt('prompt2', this)">
+        Copy Prompt
+      </button>
+
+    </div>
+
+  </div>
+<a href="https://chat.openai.com" target="_blank">
+
+  <button class="generate-btn">
+    Generate In ChatGPT
+  </button>
+
+</a>
+</div>
+
+<!-- COPY SCRIPT -->
+
+<script>
+
+function copyPrompt(id, button){
+
+  let text = document.getElementById(id).innerText;
+
+  navigator.clipboard.writeText(text);
+
+  button.innerText = "Copied ✓";
+
+  setTimeout(()=>{
+
+    button.innerText = "Copy Prompt";
+
+  },2000);
+
+}
+
+</script>
+
+</body>
+</html>
