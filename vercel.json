@@ -1,0 +1,37 @@
+{
+  "routes": [
+
+    { "src": "^/$", "dest": "/index.html" },
+
+    { "src": "^/trd$", "dest": "/trd.html" },
+    { "src": "^/ex$", "dest": "/ex.html" },
+    { "src": "^/collection$", "dest": "/collection.html" },
+
+    { "src": "^/1$", "dest": "/ac/1.html" },
+    { "src": "^/2$", "dest": "/ac/2.html" },
+    { "src": "^/3$", "dest": "/ac/3.html" },
+    { "src": "^/4$", "dest": "/ac/4.html" },
+    { "src": "^/5$", "dest": "/ac/5.html" },
+    { "src": "^/6$", "dest": "/ac/6.html" },
+    { "src": "^/7$", "dest": "/ac/7.html" },
+    { "src": "^/8$", "dest": "/ac/8.html" },
+
+    { "src": "^/index\\.html$", "status": 301, "headers": { "Location": "/" } },
+
+    { "src": "^/trd\\.html$", "status": 301, "headers": { "Location": "/trd" } },
+    { "src": "^/ex\\.html$", "status": 301, "headers": { "Location": "/ex" } },
+    { "src": "^/collection\\.html$", "status": 301, "headers": { "Location": "/collection" } },
+
+    { "src": "^/ac/1\\.html$", "status": 301, "headers": { "Location": "/1" } },
+    { "src": "^/ac/2\\.html$", "status": 301, "headers": { "Location": "/2" } },
+    { "src": "^/ac/3\\.html$", "status": 301, "headers": { "Location": "/3" } },
+    { "src": "^/ac/4\\.html$", "status": 301, "headers": { "Location": "/4" } },
+    { "src": "^/ac/5\\.html$", "status": 301, "headers": { "Location": "/5" } },
+    { "src": "^/ac/6\\.html$", "status": 301, "headers": { "Location": "/6" } },
+    { "src": "^/ac/7\\.html$", "status": 301, "headers": { "Location": "/7" } },
+    { "src": "^/ac/8\\.html$", "status": 301, "headers": { "Location": "/8" } },
+
+    { "handle": "filesystem" }
+
+  ]
+}
