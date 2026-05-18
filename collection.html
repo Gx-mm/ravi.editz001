@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Prompt Collections</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#050816;
+  color:white;
+  overflow-x:hidden;
+  position:relative;
+  padding:40px 5% 100px;
+}
+
+/* BACKGROUND GLOW */
+
+body::before{
+  content:'';
+  position:fixed;
+  width:700px;
+  height:700px;
+  background:radial-gradient(circle,#8b5cf633,transparent 70%);
+  top:-250px;
+  left:-250px;
+  z-index:-2;
+}
+
+body::after{
+  content:'';
+  position:fixed;
+  width:700px;
+  height:700px;
+  background:radial-gradient(circle,#00f0ff22,transparent 70%);
+  bottom:-250px;
+  right:-250px;
+  z-index:-2;
+}
+
+/* TITLE */
+
+.page-title{
+  text-align:center;
+  font-size:58px;
+  font-weight:800;
+  margin-bottom:18px;
+  line-height:1.1;
+  background:linear-gradient(90deg,#ffffff,#8b5cf6,#00f0ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.page-subtitle{
+  text-align:center;
+  color:#94a3b8;
+  max-width:780px;
+  margin:auto;
+  line-height:1.8;
+  font-size:16px;
+  margin-bottom:70px;
+}
+
+/* GRID */
+
+.collection-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  gap:50px;
+}
+
+/* CARD */
+
+.collection-card{
+  text-decoration:none;
+  color:white;
+  display:block;
+  border-radius:32px;
+  overflow:hidden;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(18px);
+  transition:0.45s;
+  opacity:0;
+  transform:translateY(60px);
+}
+
+.collection-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.collection-card:hover{
+  transform:translateY(-10px) scale(1.01);
+  border-color:#00f0ff;
+  box-shadow:0 0 45px rgba(0,240,255,0.18);
+}
+
+/* IMAGE */
+
+.collection-image{
+  overflow:hidden;
+  position:relative;
+}
+
+.collection-image img{
+  width:100%;
+  display:block;
+  transition:0.5s;
+}
+
+.collection-card:hover img{
+  transform:scale(1.04);
+}
+
+/* CONTENT */
+
+.collection-content{
+  padding:28px;
+}
+
+.collection-badge{
+  display:inline-block;
+  padding:8px 16px;
+  border-radius:999px;
+  background:rgba(139,92,246,0.16);
+  border:1px solid rgba(139,92,246,0.3);
+  color:#c4b5fd;
+  font-size:12px;
+  margin-bottom:18px;
+}
+
+.collection-title{
+  font-size:32px;
+  line-height:1.35;
+  margin-bottom:16px;
+  font-weight:700;
+}
+
+.collection-desc{
+  color:#94a3b8;
+  line-height:1.8;
+  font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  body{
+    padding:30px 4% 80px;
+  }
+
+  .page-title{
+    font-size:40px;
+  }
+
+  .page-subtitle{
+    font-size:14px;
+    margin-bottom:50px;
+  }
+
+  .collection-title{
+    font-size:22px;
+  }
+
+  .collection-content{
+    padding:22px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TITLE -->
+
+<h1 class="page-title">
+  Trending Prompt Collections
+</h1>
+
+<p class="page-subtitle">
+
+  Explore cinematic AI photo editing prompts, anime transformations,
+  futuristic thumbnails and premium viral editing concepts.
+
+</p>
+
+<!-- GRID -->
+
+<div class="collection-grid">
+
+  <!-- CARD 01 -->
+
+  <a href="ac/01.html" class="collection-card reveal">
+
+    <div class="collection-image">
+
+      <img src="collections/01.png">
+
+    </div>
+
+    <div class="collection-content">
+
+      <div class="collection-badge">
+       3  Collage 
+      </div>
+
+      <div class="collection-title">
+      Music Cinematic collage Prompt ⚡
+
+      </div>
+
+      <div class="collection-desc">
+
+        🎧 Golden cinematic music aesthetic poster ✨
+Dark vibe, glowing lights, torn paper collage effect 🖤
+Center me stylish boy with messy hair & emotional music mood 🎶
+Neon music player + orange black color grading gives premium Instagram edit feel 🔥
+
+      </div>
+
+    </div>
+
+  </a>
+
+</div>
+
+
+  <!-- CARD 002 -->
+
+  <a href="ac/02.html" class="collection-card reveal">
+
+    <div class="collection-image">
+
+      <img src="collections/002.png">
+
+    </div>
+
+    <div class="collection-content">
+
+      <div class="collection-badge">
+       DSLR
+      </div>
+
+      <div class="collection-title">
+      DSLR/
+      BROKER EFFECTS 
+
+      </div>
+
+      <div class="collection-desc">
+
+🔥 DSLR Bokeh Look Editing 🔥
+Sunset vibes + smooth bokeh background + killer portrait look 😎📸
+Agar tum bhi apni photos ko cinematic DSLR effect dena chahte ho, to ye edit perfect hai! ✨
+      </div>
+
+    </div>
+
+  </a>
+
+</div>
+
+
+
+  <!-- CARD 02 -->
+
+  <a href="ac/7.html" class="collection-card reveal">
+
+    <div class="collection-image">
+
+      <img src="collections/02.png">
+
+    </div>
+
+    <div class="collection-content">
+
+      <div class="collection-badge">
+       hologram 
+      </div>
+
+      <div class="collection-title">
+      3D hologram Effect Prompt ⚡
+
+      </div>
+
+      <div class="collection-desc">
+
+🎧 Futuristic 3D hologram music poster with a premium cinematic vibe ✨
+Center me stylish boy glowing blue-orange lighting ke saath khada hai 😎
+Uske around floating Spotify & Apple Music hologram cards dikh rahe hain jo next-gen music aesthetic feel dete hain 🔥
+Dark sci-fi background, neon energy rings aur glassmorphism UI design is poster ko ultra modern look dete hain 💙🧡
+      </div>
+
+    </div>
+
+  </a>
+
+</div>
+
+
+  <!-- CARD 1 -->
+
+  <a href="ac/1.html" class="collection-card reveal">
+
+    <div class="collection-image">
+
+      <img src="collections/1.png">
+
+    </div>
+
+    <div class="collection-content">
+
+      <div class="collection-badge">
+        Cinematic
+      </div>
+
+      <div class="collection-title">
+
+         Trending Cinematic Night Portrait Prompt ✨
+
+      </div>
+
+      <div class="collection-desc">
+
+        Create ultra-premium cinematic portraits with dramatic neon lighting 🌌, moody shadows 🌑, glowing effects ⚡ and DSLR-quality AI editing 📸.
+Bas apni photo upload karo aur pao viral Instagram-style edits 😍 with orange-blue cinematic tones, sharp details, aesthetic glow aur professional night vibe 🌃.
+
+      </div>
+
+    </div>
+
+  </a>
+
+  <!-- CARD 2 -->
+
+  <a href="ac/2.html" class="collection-card reveal">
+
+    <div class="collection-image">
+
+      <img src="collections/2.png">
+
+    </div>
+
+    <div class="collection-content">
+
+      <div class="collection-badge">
+        Motion Emage 
+      </div>
+
+      <div class="collection-title">
+
+        ⚡ Trending Motion Photo Editing Prompts 🎬🔥
+
+      </div>
+
+      <div class="collection-desc">
+
+        Create insane motion-effect cinematic edits with glowing lights ✨, dynamic movement blur 🌪️, neon vibes 🌃 and ultra HD AI quality 📸.
+Bas apni photo upload karo aur pao viral motion-style portraits 😍 with duplicate walking effects, cinematic color grading 🎨, DSLR sharpness aur premium aesthetic look 💥.
+Perfect for Instagram Reels 🎥, YouTube thumbnails 🚀, TikTok edits 🔥 aur eye-catching social media posts 👑.
+
+      </div>
+
+    </div>
+
+  </a>
+
+  <!-- CARD 3 -->
+
+  <a href="ac/3.html" class="collection-card reveal">
+
+    <div class="collection-image">
+
+      <img src="collections/3.png">
+
+    </div>
+
+    <div class="collection-content">
+
+      <div class="collection-badge">
+        2D model 
+      </div>
+
+      <div class="collection-title"> Tiny Clone Photography Prompt Collection
+
+      </div>
+
+      <div class="collection-desc">
+
+        You can create Unique Photos , everywhere like travels shots , mirror pic , garden photo in just a second
+
+      </div>
+
+    </div>
+
+  </a>
+
+</div>
+
+  <!-- CARD 4 -->
+
+  <a href="ac/4.html" class="collection-card reveal">
+
+    <div class="collection-image">
+
+      <img src="collections/4.png">
+
+    </div>
+
+    <div class="collection-content">
+
+      <div class="collection-badge">
+        Night 
+      </div>
+
+      <div class="collection-title"> 🌙 Trending Cinematic Night Photography Prompt ✨📸
+
+      </div>
+
+      <div class="collection-desc">
+
+        Create stunning cinematic night portraits with glowing rim lights ⚡, soft golden highlights 🌟, dark moody atmosphere 🌌 and ultra-realistic DSLR quality 🎥.
+Bas apni photo upload karo aur pao aesthetic night edits 😍 with premium color grading 🎨, dreamy background blur, sharp facial details aur viral Instagram-style look 🔥.
+Perfect for Instagram posts 📱, reels 🎬, profile pictures 👑, couple edits 💞 aur professional cinematic photography vibes 🚀.
+
+      </div>
+
+    </div>
+
+  </a>
+
+</div>
+
+
+  <!-- CARD 5 -->
+
+  <a href="ac/5.html" class="collection-card reveal">
+
+    <div class="collection-image">
+
+      <img src="collections/5.png">
+
+    </div>
+
+    <div class="collection-content">
+
+      <div class="collection-badge">
+         Cartoon Prompt ✨
+      </div>
+
+      <div class="collection-title"> Aesthetic Cartoon
+Photo Editing
+
+      </div>
+
+      <div class="collection-desc">
+        Trending Aesthetic Cartoon Photo Editing Prompt ✨
+Apni normal photo ko viral cartoon look me convert karo using AI 😍
+Bas prompt copy karo aur amazing edits banao 🔥
+
+      </div>
+
+    </div>
+
+  </a>
+
+</div>
+
+  <!-- CARD 6 -->
+
+  <a href="ac/6.html" class="collection-card reveal">
+
+    <div class="collection-image">
+
+      <img src="collections/6.png">
+
+    </div>
+
+    <div class="collection-content">
+
+      <div class="collection-badge">
+         Cricket  View 📸
+      </div>
+
+      <div class="collection-title"> 🏏 Trending Cricket Stadium View Prompt 🔥📸
+
+      </div>
+
+      <div class="collection-desc">
+
+        Create epic cricket stadium cinematic edits with live match vibes 🌃, crowd atmosphere 🎉, stadium lights 💡 and ultra-realistic AI photography quality ✨.
+Bas apni photo upload karo aur pao IPL-style stadium portraits 😍 with premium color grading 🎨, realistic audience background, cinematic blur aur celebrity fan look 😎🔥.
+Perfect for Instagram posts 📱, cricket fan edits 🏆, reels 🎬, profile pictures 👑 aur viral sports-style thumbnails 🚀.
+
+      </div>
+
+    </div>
+
+  </a>
+
+</div>
+
+
+
+</div>
+
+<!-- SCROLL ANIMATION -->
+
+<script>
+
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll",()=>{
+
+  for(let i=0;i<reveals.length;i++){
+
+    let windowHeight = window.innerHeight;
+
+    let revealTop = reveals[i].getBoundingClientRect().top;
+
+    let revealPoint = 120;
+
+    if(revealTop < windowHeight - revealPoint){
+
+      reveals[i].classList.add("show");
+
+    }
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
