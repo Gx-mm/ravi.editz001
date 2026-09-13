@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBM7P169GP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WBM7P169GP');
+  </script>
+
+    <title>Admin Dashboard | Ravi EDITZ</title>
+    
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        :root {
+            --bg-dark: #050508;
+            --bg-card: rgba(20, 20, 28, 0.45);
+            --bg-card-hover: rgba(30, 30, 42, 0.7);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(0, 210, 255, 0.2);
+            --primary-cyan: #00d2ff;
+            --primary-purple: #8a2be2;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --danger: #ef4444;
+            --danger-bg: rgba(239, 68, 68, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Glows */
+        .ambient-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.25;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .glow-1 { top: -10%; left: -5%; width: 45vw; height: 45vw; background: var(--primary-cyan); }
+        .glow-2 { bottom: -10%; right: -5%; width: 50vw; height: 50vw; background: var(--primary-purple); }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        /* Top Header */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-glass);
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .branding {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-subtitle {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--primary-cyan);
+            text-transform: uppercase;
+            margin-bottom: 0.35rem;
+        }
+
+        .brand-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, var(--primary-cyan) 60%, var(--primary-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-logout {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            background: var(--danger-bg);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-logout:hover {
+            background: var(--danger);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            margin-bottom: 3rem;
+        }
+
+        .welcome-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-section p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Modules Grid (Action Cards) */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .module-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .module-card.purple::before {
+            background: linear-gradient(90deg, transparent, var(--primary-purple), transparent);
+        }
+
+        .module-card:hover {
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            border-color: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 210, 255, 0.15);
+        }
+
+        .module-card.purple:hover {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(138, 43, 226, 0.2);
+        }
+
+        .module-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .icon-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: var(--primary-cyan);
+        }
+
+        .icon-box.purple {
+            color: #c084fc;
+        }
+
+        .stat-chip {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-chip strong {
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .card-body h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-cyan);
+            transition: gap 0.2s ease;
+        }
+
+        .module-card.purple .card-footer {
+            color: #c084fc;
+        }
+
+        .module-card:hover .card-footer {
+            gap: 14px;
+        }
+
+        /* Quick Links / Status Section */
+        .status-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        .view-site-link {
+            color: var(--primary-cyan);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .view-site-link:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.9); }
+        }
+
+        @media (max-width: 768px) {
+            .branding { margin-bottom: 0.5rem; }
+            .dashboard-header { flex-direction: column; align-items: flex-start; }
+            .welcome-section h2 { font-size: 2rem; }
+            .module-card { padding: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="branding">
+                <span class="brand-subtitle">Control Hub</span>
+                <h1 class="brand-title">Ravi EDITZ</h1>
+            </div>
+            <div class="header-actions">
+                <button class="btn-logout" onclick="logoutAdmin()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- Welcome Banner -->
+        <section class="welcome-section">
+            <h2>Welcome, Admin 👋</h2>
+            <p>Select a module to manage prompts or application resources on Ravi EDITZ.</p>
+        </section>
+
+        <!-- Navigation Cards (Buttons to respective pages) -->
+        <div class="modules-grid">
+            
+            <!-- 1. Prompt Management Card -->
+            <!-- Agar aapka prompt manage page alag naam se hai to href change kar lein -->
+            <a href="admin-prompts.html" class="module-card">
+                <div class="card-top">
+                    <div class="icon-box">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20h9"></path>
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-chip">
+                        Total: <strong id="prompt-count">--</strong>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>Prompt Management</h3>
+                    <p>Add, edit, upload images, and organize AI prompt formulas across various categories.</p>
+                </div>
+                <div class="card-footer">
+                    Manage Prompts
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 2. App Management Card -->
+            <a href="admin-app.html" class="module-card purple">
+                <div class="card-top">
+                    <div class="icon-box purple">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                        </svg>
+                    </div>
+                    <div class="stat-chip">
+                        Total: <strong id="app-count">--</strong>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>App Management</h3>
+                    <p>Manage editing applications, download links, icons, and description guides for creators.</p>
+                </div>
+                <div class="card-footer">
+                    Manage Apps
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- System Status Bar -->
+        <div class="status-panel">
+            <div class="status-indicator">
+                <span class="pulse-dot"></span>
+                <span>Database Connection Active</span>
+            </div>
+            <a href="index.html" target="_blank" class="view-site-link">
+                View Live Website
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Credentials from existing key.js -->
+    <script src="key.js"></script>
+
+    <script>
+        // 1. Session Protection Check
+        const isAuthenticated = sessionStorage.getItem('admin_authenticated');
+        if (!isAuthenticated) {
+            window.location.href = 'admin-login.html';
+        }
+
+        // 2. Initialize Supabase Client
+        const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        // 3. Fetch Quick Stats from Database
+        async function fetchCounts() {
+            try {
+                // Fetch Prompts count
+                const { count: promptCount } = await supabaseClient
+                    .from('prompts')
+                    .select('*', { count: 'exact', head: true });
+
+                if (promptCount !== null) {
+                    document.getElementById('prompt-count').textContent = promptCount;
+                }
+
+                // Fetch Apps count
+                const { count: appCount } = await supabaseClient
+                    .from('apps')
+                    .select('*', { count: 'exact', head: true });
+
+                if (appCount !== null) {
+                    document.getElementById('app-count').textContent = appCount;
+                }
+            } catch (err) {
+                console.error("Stats Error:", err);
+            }
+        }
+
+        // 4. Logout Function
+        function logoutAdmin() {
+            sessionStorage.removeItem('admin_authenticated');
+            window.location.href = 'admin-login.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchCounts);
+    </script>
+</body>
+</html>
