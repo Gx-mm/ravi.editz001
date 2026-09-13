@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBM7P169GP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WBM7P169GP');
+  </script>
+
+    <title>Editing Apps & Creator Tools | Ravi EDITZ</title>
+    <meta name="description" content="Discover video editing apps, photo editing apps, AI creator tools and useful editing resources on Ravi EDITZ.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        :root {
+            --bg-base: #030305;
+            --bg-surface: rgba(255, 255, 255, 0.02);
+            --bg-surface-hover: rgba(255, 255, 255, 0.04);
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-highlight: rgba(255, 255, 255, 0.15);
+            
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-tertiary: #71717a;
+            
+            --accent-primary: #a855f7;
+            --accent-secondary: #6366f1;
+            --accent-gradient: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(var(--border-subtle) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(circle at 50% 0%, black 10%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at 50% 0%, black 10%, transparent 80%);
+            z-index: -3;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 15% 10%, rgba(139, 92, 246, 0.12), transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(0, 240, 255, 0.08), transparent 40%);
+            top: 0; left: 0;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .text-gradient {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            background: rgba(3, 3, 5, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:hover { color: #fff; }
+
+        .nav-links a.active {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 0; width: 100%; height: 2px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .menu-toggle span {
+            width: 25px; height: 2px;
+            background-color: var(--text-primary);
+            transition: 0.3s;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            padding: 6rem 0 4rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 40%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 600px;
+            background: var(--accent-primary);
+            filter: blur(150px);
+            opacity: 0.15;
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            padding: 0.4rem 1.2rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .hero-trust {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            margin-top: 1.5rem;
+            font-family: monospace;
+        }
+
+        /* Search & Filter */
+        .tools-header {
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.2rem; top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            padding: 1.2rem 1.5rem 1.2rem 3rem;
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+            backdrop-filter: blur(10px);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+            background: var(--bg-surface-hover);
+        }
+
+        .search-input::placeholder { color: var(--text-tertiary); }
+
+        .filter-container {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 0.6rem 1.25rem;
+            border-radius: 100px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--border-highlight);
+            color: #fff;
+        }
+
+        .filter-btn.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        /* App Grid */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 6rem;
+            min-height: 250px;
+        }
+
+        .app-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(10px);
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-highlight);
+            background: var(--bg-surface-hover);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-icon {
+            width: 58px; height: 58px;
+            border-radius: 14px;
+            object-fit: cover;
+            border: 1px solid var(--border-subtle);
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .app-card:hover .app-icon { border-color: rgba(255,255,255,0.25); }
+
+        .app-title-group h3 { font-size: 1.25rem; margin-bottom: 0.2rem; }
+        
+        .badge-category {
+            display: inline-block; background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-subtle);
+            padding: 0.1rem 0.6rem; border-radius: 100px;
+            font-size: 0.75rem; color: var(--text-secondary);
+        }
+
+        .app-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .app-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: auto;
+        }
+
+        .btn-primary-small {
+            width: 100%;
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 8px;
+            background: #fff; color: #000;
+            padding: 0.85rem 1rem; border-radius: 50px;
+            font-weight: 600; font-family: var(--font-body);
+            font-size: 0.92rem; border: none;
+            transition: var(--transition-fast);
+        }
+
+        .btn-primary-small:hover { 
+            background: #e2e8f0; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+        }
+
+        .loading-text, .empty-text {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            padding: 4rem 1rem;
+        }
+
+        /* Informational Sections */
+        .info-section {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .info-content h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+        .info-content p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .info-content h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: #fff; }
+
+        .steps-container { display: flex; flex-direction: column; gap: 1rem; }
+        .step-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .step-number {
+            font-family: var(--font-display);
+            font-size: 1.5rem; font-weight: 800;
+            color: var(--accent-primary); opacity: 0.5;
+        }
+        .step-text { color: var(--text-secondary); font-size: 1rem; margin: 0; }
+
+        /* Footer */
+        .main-footer {
+            border-top: 1px solid var(--border-subtle);
+            background: rgba(2, 4, 10, 0.9);
+            padding: 5rem 1.5rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1250px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .footer-brand p { color: var(--text-secondary); font-size: 0.95rem; max-width: 300px; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.8rem; }
+        .footer-links h4 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .footer-links a { color: var(--text-secondary); font-size: 0.95rem; }
+        .footer-links a:hover { color: #fff; }
+
+        .footer-bottom {
+            text-align: center; padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-tertiary); font-size: 0.85rem;
+        }
+
+        @media (max-width: 1024px) {
+            .info-grid { grid-template-columns: 1fr; gap: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: absolute;
+                top: 100%; left: 0; width: 100%;
+                background: #02040a;
+                flex-direction: column;
+                padding: 1.5rem 0; gap: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: 0.4s ease-in-out;
+                border-bottom: 1px solid var(--border-subtle);
+            }
+            .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+            .nav-links a { padding: 1rem 1.5rem; display: block; border-bottom: 1px solid rgba(255,255,255,0.03); }
+            .hero { padding: 4rem 0 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Ravi EDITZ</a>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="trd.html">Trending</a>
+                <a href="ex.html">Prompts</a>
+                <a href="collection.html">Collections</a>
+                <a href="app.html" class="active">Apps</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-glow"></div>
+            <div class="hero-badge">⚡ Creator Apps Hub</div>
+            <h1>Best Editing Apps & <span class="text-gradient">Creator Tools</span></h1>
+            <p>Discover useful video editing, photo editing and AI creator apps with direct access to download and explore.</p>
+            <div class="hero-trust">Curated resources for creators and editors.</div>
+        </section>
+
+        <!-- Search & Category Filters -->
+        <section class="tools-header">
+            <div class="search-container">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search editing apps..." aria-label="Search apps">
+            </div>
+
+            <div class="filter-container" id="filterContainer">
+                <button class="filter-btn active" data-filter="All">All Apps</button>
+                <button class="filter-btn" data-filter="Video Editing">Video Editing</button>
+                <button class="filter-btn" data-filter="Photo Editing">Photo Editing</button>
+                <button class="filter-btn" data-filter="AI Tools">AI Tools</button>
+                <button class="filter-btn" data-filter="Presets">Presets</button>
+                <button class="filter-btn" data-filter="Utilities">Utilities</button>
+            </div>
+        </section>
+
+        <!-- Dynamic Apps Grid -->
+        <section class="app-grid" id="appGrid">
+            <div class="loading-text">Loading creator apps...</div>
+        </section>
+
+
+       <!-- SEO Informational Section -->
+        <section class="info-section">
+            <div class="info-grid">
+                <div class="info-content">
+                    <h2>Editing Apps for Creators</h2>
+                    <p>Modern content creation requires the right tools. Whether you are generating AI imagery, cutting a short-form video, or applying cinematic color grades, choosing the correct editing application is essential for your workflow.</p>
+                    <h3>Video Editing Apps</h3>
+                    <p>Applications provide creators with multi-track timelines, keyframe animations, and built-in effects necessary for crafting viral social media content natively from a mobile device.</p>
+                    <h3>Photo & AI Editing Tools</h3>
+                    <p>Photo editors allow for rapid visual adjustments, object removal, background manipulation, and style transfer.</p>
+                </div>
+                <div class="info-content">
+                    <h2>How to Choose the Right Editing App</h2>
+                    <div class="steps-container">
+                        <div class="step-card">
+                            <span class="step-number">01</span>
+                            <p class="step-text"><strong>Check editing features:</strong> Ensure the app supports keyframing, masking, or AI generation if your workflow requires it.</p>
+                        </div>
+                        <div class="step-card">
+                            <span class="step-number">02</span>
+                            <p class="step-text"><strong>Check device compatibility:</strong> Some applications require high-end processing power for rendering.</p>
+                        </div>
+                        <div class="step-card">
+                            <span class="step-number">03</span>
+                            <p class="step-text"><strong>Check export quality:</strong> Verify if the app allows 4K or 1080p 60fps exports without aggressive watermarks.</p>
+                        </div>
+                        <div class="step-card">
+                            <span class="step-number">04</span>
+                            <p class="step-text"><strong>Use authorized sources:</strong> Always download tools from verified distribution channels to maintain security.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Ravi EDITZ</h3>
+                <p>AI editing prompts, creator resources and useful tools for modern creators.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <a href="index.html">Home</a>
+                <a href="trd.html">Trending</a>
+                <a href="ex.html">Prompts</a>
+                <a href="collection.html">Collections</a>
+                <a href="app.html">Apps</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal & Info</h4>
+                <a href="aboutus.html">About Us</a>
+                <a href="contactus.html">Contact Us</a>
+                <a href="privacypolicy.html">Privacy Policy</a>
+                <a href="termsandconditions.html">Terms & Conditions</a>
+                <a href="disclaimer.html">Disclaimer</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ravi EDITZ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Supabase Credentials (Read from existing key.js) -->
+    <script src="key.js"></script>
+
+    <!-- Supabase Fetch & Display Logic -->
+    <script>
+        // Initialize Supabase Client
+        const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        let allApps = [];
+        let currentFilter = 'All';
+        let currentSearch = '';
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuBtn.classList.toggle('active');
+            });
+        }
+
+        // 1. Fetch Apps from Supabase
+        async function fetchApps() {
+            const grid = document.getElementById('appGrid');
+            try {
+                const { data, error } = await supabaseClient
+                    .from('apps')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+                allApps = data || [];
+                renderApps();
+            } catch (err) {
+                console.error("Fetch Apps Error:", err);
+                grid.innerHTML = '<div class="empty-text">Unable to load applications right now. Please try again later.</div>';
+            }
+        }
+
+        // 2. Render Cards Dynamically
+        function renderApps() {
+            const grid = document.getElementById('appGrid');
+
+            const filtered = allApps.filter(app => {
+                const appCat = (app.category || '').toLowerCase();
+                const appName = (app.name || '').toLowerCase();
+                const appDesc = (app.description || '').toLowerCase();
+
+                const matchesCat = (currentFilter === 'All' || appCat === currentFilter.toLowerCase());
+                const matchesSearch = appName.includes(currentSearch) || appDesc.includes(currentSearch);
+
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="empty-text">No applications found matching your criteria.</div>';
+                return;
+            }
+
+            grid.innerHTML = filtered.map(app => `
+                <article class="app-card">
+                    <div class="app-header">
+                        <img src="${escapeHtml(app.icon_url || '')}" alt="${escapeHtml(app.name || 'App')}" class="app-icon" onerror="this.src='t/1.png'">
+                        <div class="app-title-group">
+                            <h3>${escapeHtml(app.name || 'Untitled App')}</h3>
+                            <span class="badge-category">${escapeHtml(app.category || 'Tool')}</span>
+                        </div>
+                    </div>
+                    <p class="app-desc">${escapeHtml(app.description || 'No description provided.')}</p>
+                    <div class="app-actions">
+                        <a href="${escapeHtml(app.download_url || '#')}" target="_blank" rel="noopener noreferrer" class="btn-primary-small">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Download App
+                        </a>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // Helper: Prevent HTML Injections
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Event Listeners for Filters
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                e.currentTarget.classList.add('active');
+                currentFilter = e.currentTarget.getAttribute('data-filter');
+                renderApps();
+            });
+        });
+
+        // Event Listener for Search
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                currentSearch = e.target.value.toLowerCase().trim();
+                renderApps();
+            });
+        }
+
+        // Fetch apps on page load
+        document.addEventListener('DOMContentLoaded', fetchApps);
+    </script>
+</body>
+</html>

@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBM7P169GP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WBM7P169GP');
+  </script>
+
+    <title>About Us | Ravi EDITZ - Premium AI Creative Platform</title>
+    <meta name="description" content="Discover the story behind Ravi EDITZ. We are the ultimate destination for cinematic AI photo editing prompts, futuristic concepts, and creative inspiration.">
+    
+    <!-- Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========================================================
+           1. CSS VARIABLES & TOKENS (Agency Level)
+           ======================================================== */
+        :root {
+            /* Colors */
+            --bg-base: #030305;
+            --bg-surface: rgba(255, 255, 255, 0.02);
+            --bg-surface-hover: rgba(255, 255, 255, 0.04);
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-highlight: rgba(255, 255, 255, 0.15);
+            
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-tertiary: #71717a;
+            
+            --accent-primary: #a855f7;
+            --accent-secondary: #6366f1;
+            --accent-gradient: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            --accent-glow: rgba(168, 85, 247, 0.15);
+            
+            /* Typography */
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Animation */
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ========================================================
+           2. BASE RESET & GLOBAL STYLES
+           ======================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Subtle AI Background Grid Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: 
+                linear-gradient(var(--border-subtle) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: radial-gradient(circle at 50% 0%, black 10%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at 50% 0%, black 10%, transparent 80%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        ul { list-style: none; }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .text-gradient {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ========================================================
+           3. NAVBAR
+           ======================================================== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(3, 3, 5, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #fff;
+        }
+
+        /* ========================================================
+           4. PREMIUM HERO SECTION
+           ======================================================== */
+        .hero {
+            position: relative;
+            padding: 8rem 0 6rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Ambient glowing orb behind hero */
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: var(--accent-primary);
+            filter: blur(200px);
+            opacity: 0.15;
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulseGlow 8s ease-in-out infinite alternate;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* ========================================================
+           5. ABOUT RAVI EDITZ (WHO WE ARE)
+           ======================================================== */
+        .who-we-are {
+            padding: 5rem 0;
+        }
+
+        .glass-panel {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 4rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle top gradient line on card */
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: var(--accent-gradient);
+            opacity: 0.5;
+        }
+
+        .section-label {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .glass-panel h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .glass-panel p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ========================================================
+           6. WHAT WE PROVIDE
+           ======================================================== */
+        .provide-section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: var(--border-highlight);
+            background: var(--bg-surface-hover);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2), 0 0 40px var(--accent-glow);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover .card-icon {
+            background: var(--accent-primary);
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* ========================================================
+           7. OUR MISSION
+           ======================================================== */
+        .mission-section {
+            padding: 8rem 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .mission-bg-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%; max-width: 800px; height: 300px;
+            background: var(--accent-gradient);
+            filter: blur(120px);
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .mission-text {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 500;
+            line-height: 1.3;
+            color: #fff;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* ========================================================
+           8. OUR APPROACH (Workflow Visual)
+           ======================================================== */
+        .approach-section {
+            padding: 5rem 0 8rem;
+        }
+
+        .approach-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .approach-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .approach-text p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Workflow Visual */
+        .workflow-visual {
+            position: relative;
+            padding: 2rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+        }
+
+        .workflow-step {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            padding: 1.5rem 0;
+            z-index: 2;
+        }
+
+        .workflow-icon {
+            width: 56px; height: 56px;
+            background: rgba(3,3,5,0.8);
+            border: 1px solid var(--border-highlight);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .workflow-step:hover .workflow-icon {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .workflow-content h4 {
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+        
+        .workflow-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* The glowing connecting line */
+        .workflow-visual::before {
+            content: '';
+            position: absolute;
+            top: 4rem; bottom: 4rem;
+            left: 3rem; /* Aligned with center of icons */
+            width: 2px;
+            background: linear-gradient(to bottom, var(--border-subtle) 0%, var(--accent-primary) 50%, var(--border-subtle) 100%);
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        /* ========================================================
+           9. CONTACT CTA
+           ======================================================== */
+        .cta-section {
+            padding: 0 0 6rem;
+        }
+
+        .cta-card {
+            background: linear-gradient(180deg, var(--bg-surface-hover) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-card p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-email {
+            font-family: monospace;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            background: rgba(0,0,0,0.4);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+            display: inline-block;
+            margin-bottom: 2rem;
+            transition: var(--transition-fast);
+        }
+
+        .cta-email:hover {
+            color: #fff;
+            border-color: var(--border-highlight);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #fff;
+            color: #000;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.2);
+            background: #f4f4f5;
+        }
+
+        /* ========================================================
+           10. FOOTER
+           ======================================================== */
+        .premium-footer {
+            border-top: 1px solid var(--border-subtle);
+            background: rgba(0,0,0,0.6);
+            padding: 4rem 0 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .footer-brand p { color: var(--text-secondary); font-size: 0.95rem; max-width: 300px; }
+        .footer-col h3 { font-size: 1.1rem; margin-bottom: 1.5rem; color: #fff; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a { color: var(--text-secondary); font-size: 0.95rem; }
+        .footer-links a:hover { color: var(--text-primary); }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+
+        /* ========================================================
+           11. ANIMATIONS (Scroll Reveal System)
+           ======================================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered delay for grid items */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+        .delay-6 { transition-delay: 0.6s; }
+
+        @keyframes pulseGlow {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+            100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.2; }
+        }
+
+        /* ========================================================
+           12. RESPONSIVE DESIGN (Mobile First Focus)
+           ======================================================== */
+        @media (max-width: 992px) {
+            .approach-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .workflow-visual::before { left: 2rem; }
+            .glass-panel { padding: 3rem 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Assuming existing mobile menu handles this */
+            .hero { padding: 6rem 0 4rem; }
+            .mission-section { padding: 5rem 0; }
+            .cta-card { padding: 3rem 1.5rem; }
+            
+            .workflow-step { flex-direction: column; text-align: center; gap: 1rem; }
+            .workflow-visual::before { display: none; } /* Hide line on mobile for cleaner stack */
+            .workflow-icon { margin: 0 auto; }
+        }
+
+        /* PREFERS REDUCED MOTION */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+            .hero-glow { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+   <!-- =========================================================================
+         NAVIGATION (Matches Ravi EDITZ Brand)
+         ========================================================================= -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="nav-brand">Ravi EDITZ</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="trending.html">Trending</a>
+                <a href="prompts.html">Prompts</a>
+                <a href="aboutus.html" class="active">About Us</a>
+                <a href="contactus.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- =========================================================================
+             1. PREMIUM HERO SECTION
+             ========================================================================= -->
+        <section class="hero">
+            <div class="hero-glow"></div>
+            <div class="container reveal">
+                <div class="hero-eyebrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    About Ravi EDITZ
+                </div>
+                <h1>Creative Ideas.<br><span class="text-gradient">Powered by AI.</span></h1>
+                <p>We are the ultimate destination for cinematic AI photo editing prompts, futuristic concepts, and creative inspiration designed for modern creators.</p>
+            </div>
+        </section>
+
+        <!-- =========================================================================
+             2. ABOUT RAVI EDITZ (WHO WE ARE)
+             ========================================================================= -->
+        <section class="who-we-are container">
+            <div class="glass-panel reveal">
+                <span class="section-label">Who We Are</span>
+                <h2>Empowering the Digital Artist</h2>
+                <p>Ravi EDITZ is a platform dedicated to empowering creators, editors, and digital artists. We meticulously curate and craft premium, high-quality AI prompts designed to help you transform your raw imagination into stunning, viral visual art without the technical guesswork.</p>
+            </div>
+        </section>
+
+        <!-- =========================================================================
+             3. WHAT WE PROVIDE (6 CARDS)
+             ========================================================================= -->
+        <section class="provide-section container">
+            <div class="section-header reveal">
+                <span class="section-label">Features</span>
+                <h2>What We Provide</h2>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card reveal delay-1">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    </div>
+                    <h3>AI Photo Editing Prompts</h3>
+                    <p>Discover exact text formulas to achieve realistic, cinematic edits and professional color grading.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card reveal delay-2">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                    </div>
+                    <h3>AI Image Generation Prompts</h3>
+                    <p>Craft stunning visual concepts from scratch utilizing optimized prompt engineering.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card reveal delay-3">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2v1"/><path d="M12 7a5 5 0 1 0 5 5c0 2-1 3-2 4h-6c-1-1-2-2-2-4a5 5 0 1 0 5-5Z"/></svg>
+                    </div>
+                    <h3>Creative Editing Ideas</h3>
+                    <p>Fuel your artistic imagination with fresh concepts, compositions, and lighting setups.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card reveal delay-4">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                    </div>
+                    <h3>Trending AI Styles</h3>
+                    <p>Stay ahead of the curve with viral aesthetics, anime transformations, and cyberpunk themes.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="service-card reveal delay-5">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+                    </div>
+                    <h3>Prompt Collections</h3>
+                    <p>Access carefully curated prompt galleries organized by specific creative themes and moods.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="service-card reveal delay-6">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    </div>
+                    <h3>Creative Resources</h3>
+                    <p>Enhance your workflow with additional tools, tips, and guidelines for the modern creator.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================================
+             4. OUR MISSION
+             ========================================================================= -->
+        <section class="mission-section">
+            <div class="mission-bg-glow"></div>
+            <div class="container reveal">
+                <span class="section-label">Our Mission</span>
+                <p class="mission-text">To empower creators, editors, and digital artists with <span class="text-gradient">premium AI prompts</span> that transform imagination into viral visual art.</p>
+            </div>
+        </section>
+
+        <!-- =========================================================================
+             5. OUR APPROACH (Workflow Visual)
+             ========================================================================= -->
+        <section class="approach-section container">
+            <div class="approach-layout">
+                <div class="approach-text reveal">
+                    <span class="section-label">Our Approach</span>
+                    <h2>A Streamlined Creative Workflow</h2>
+                    <p>We believe that technology should enhance creativity, not complicate it. By breaking down complex AI models into structural, easy-to-use prompts, we bridge the gap between human imagination and artificial intelligence.</p>
+                    <p>Whether you are producing a cinematic portrait or a futuristic landscape, our structured approach ensures your artistic vision translates seamlessly to the digital canvas.</p>
+                </div>
+                
+                <div class="workflow-visual reveal delay-2">
+                    <!-- Step 1 -->
+                    <div class="workflow-step">
+                        <div class="workflow-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                        </div>
+                        <div class="workflow-content">
+                            <h4>The Idea</h4>
+                            <p>Your unique creative concept.</p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="workflow-step">
+                        <div class="workflow-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+                        </div>
+                        <div class="workflow-content">
+                            <h4>The Prompt</h4>
+                            <p>Our structured formula.</p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="workflow-step">
+                        <div class="workflow-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                        </div>
+                        <div class="workflow-content">
+                            <h4>The AI</h4>
+                            <p>Generating the digital base.</p>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="workflow-step">
+                        <div class="workflow-icon" style="background: var(--accent-gradient); border-color: transparent;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <div class="workflow-content">
+                            <h4>Creative Result</h4>
+                            <p>Your polished masterpiece.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================================
+             6. CONTACT CTA
+             ========================================================================= -->
+        <section class="cta-section container">
+            <div class="cta-card reveal">
+                <h2>Have a question or suggestion?</h2>
+                <p>Get in touch with Ravi EDITZ to collaborate, request a specific prompt style, or simply say hello.</p>
+                
+                <a href="mailto:supportgrowx@gmail.com" class="cta-email">supportgrowx@gmail.com</a>
+                <br>
+                
+                <a href="contactus.html" class="btn-primary">
+                    Contact Us
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========================================================================
+         7. FOOTER (Matches Existing)
+         ========================================================================= -->
+    <footer class="premium-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>Ravi EDITZ</h2>
+                    <p>Creative AI prompts, editing ideas, and futuristic visual resources designed for the next generation of creators.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="trending.html">Trending Prompts</a></li>
+                        <li><a href="collections.html">Collections</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="aboutus.html">About Us</a></li>
+                        <li><a href="contactus.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                        <li><a href="termsandconditions.html">Terms & Conditions</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ravi EDITZ. All rights reserved. | Contact: supportgrowx@gmail.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =========================================================================
+         INTERACTIVITY SCRIPT (Vanilla JS Scroll Reveal)
+         ========================================================================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check for reduced motion preference
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            if (prefersReducedMotion) {
+                // If user prefers reduced motion, make everything visible immediately
+                document.querySelectorAll('.reveal').forEach(el => {
+                    el.classList.add('visible');
+                });
+                return;
+            }
+
+            // Setup Intersection Observer for smooth scroll animations
+            const revealOptions = {
+                root: null,
+                rootMargin: '0px 0px -100px 0px',
+                threshold: 0.15
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Stop observing once revealed to keep animation clean
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            // Select and observe all elements with the 'reveal' class
+            document.querySelectorAll('.reveal').forEach(el => {
+                revealObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
