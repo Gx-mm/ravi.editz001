@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Home Page -->
+  <url>
+    <loc>https://ravieditz-ai.vercel.app/</loc>
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <!-- Trending Prompts Page -->
+  <url>
+    <loc>https://ravieditz-ai.vercel.app/trd.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Explore Prompts Page -->
+  <url>
+    <loc>https://ravieditz-ai.vercel.app/ex.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Collections Page -->
+  <url>
+    <loc>https://ravieditz-ai.vercel.app/collection.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Applications Page -->
+  <url>
+    <loc>https://ravieditz-ai.vercel.app/app.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Video Prompts Page -->
+  <url>
+    <loc>https://ravieditz-ai.vercel.app/video.html</loc>
+    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- Info & Legal Pages -->
+  <url>
+    <loc>https://ravieditz-ai.vercel.app/aboutus.html</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://ravieditz-ai.vercel.app/contactus.html</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://ravieditz-ai.vercel.app/privacypolicy.html</loc>
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://ravieditz-ai.vercel.app/termsandconditions.html</loc>
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://ravieditz-ai.vercel.app/disclaimer.html</loc>
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+</urlset>
